@@ -248,6 +248,126 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/10/MySql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.gif">
+      <meta itemprop="name" content="Zhang guo zheng">
+      <meta itemprop="description" content="要做做的巨人">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="smile">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/10/MySql/" class="post-title-link" itemprop="url">MySql</a>
+        </h2>
+
+        <div class="post-meta">
+		
+         <i class="fa fa-thumb-tack"></i>
+         <font color=7D26CD>置顶</font>
+         <span class="post-meta-divider">|</span>
+        
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 22:07:08" itemprop="dateCreated datePublished" datetime="2020-02-10T22:07:08+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-23 12:34:54" itemprop="dateModified" datetime="2021-05-23T12:34:54+08:00">2021-05-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="MySql数据库（完善中…）"><a href="#MySql数据库（完善中…）" class="headerlink" title="MySql数据库（完善中…）"></a>MySql数据库（完善中…）</h1><h2 id="1-1数据库概述"><a href="#1-1数据库概述" class="headerlink" title="1.1数据库概述"></a>1.1数据库概述</h2><p>[TOC]</p>
+<ol>
+<li><p>数据库就是存储数据的仓库，其本质是一个文件系统</p>
+</li>
+<li><p>数据库管理系统：指一种操作和管理数据库的大型软件，用于建立和维护数据库，对数据库进行统一管理和控制，以保证数据库的安全性和完整性。用户通过数据库管理系统访问数据库表中的内容</p>
+</li>
+<li><p><img src="D:/Blog/source/images/aHR0cHM6Ly91cGxvYWRmaWxlcy5ub3djb2Rlci5jb20vaW1hZ2VzLzIwMjAwMTAxLzQ5NDIzMjVfMTU3Nzg3MjYyOTQzMF9FNzQ5NkZEQzc0ODcxMjQyM0M1NEQ3RjI1NkUyREQyNQ-1621743810073" alt="img"></p>
+</li>
+<li><p>通过dos窗口打开MySql服务或者关闭</p>
+<ol>
+<li>net start mysql</li>
+<li>net stop mysql</li>
+</ol>
+</li>
+<li><p><img src="D:/Blog/source/images/20201202102052259-1621743829423.png" alt="img"></p>
+</li>
+<li><p>创建数据库：creat database 数据库名 character set 字符集</p>
+</li>
+<li><p>查询某个数据库定义的信息： show create database 数据库名</p>
+</li>
+<li><p>查看正在使用的数据库 select database();</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> 创建表 create table表名(</span><br><span class="line">字段名 类型(长度) 约束,</span><br><span class="line">字段名 类型(长度) 约束</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<hr>
+</li>
+<li><p>/<em>添加多个列方法一</em>/</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student</span><br><span class="line"><span class="keyword">ADD</span> address <span class="type">VARCHAR</span>(<span class="number">200</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line"><span class="keyword">ADD</span> home_tel <span class="type">CHAR</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p> /<em>add语句之间用逗号分隔，最后用分号结束</em>/</p>
+<p> /<em>add语句之间用逗号分隔，最后用分号结束</em>/</p>
+<p> /<em>添加多个列方法二</em>/</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> student</span><br><span class="line"><span class="keyword">ADD</span> (address <span class="type">VARCHAR</span>(<span class="number">200</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,home_tel <span class="type">CHAR</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p><code>ALTER TABLE sort MODIFY sname VARCHAR(50) NOT NULL;</code> /* 添加约束NOT NULL */</p>
+</li>
+<li><p>为分类表的分类名称字段进行更换 更换为 snamesname varchar(30)</p>
+</li>
+<li><p>rename 表名 to 新表名</p>
+</li>
+</ol>
+<h2 id="2-2-编码设置"><a href="#2-2-编码设置" class="headerlink" title="2.2 编码设置"></a>2.2 编码设置</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/10/MySql/" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
 
@@ -316,9 +436,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -381,7 +507,7 @@
   </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共75字</span>
+  <span class="post-count">博客全站共3.5k字</span>
 </div>
 
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
